@@ -46,8 +46,8 @@
 
 
 var hello = __webpack__require__(1),
-    name = __webpack__require__(1)
-var name2 = __webpack__require__(1);
+    name = __webpack__require__(2)
+var name2 = __webpack__require__(2);
 console.log(hello)
 console.log(name,name2)
 },function anonymous(module,exports,__webpack__require__
@@ -66,7 +66,7 @@ module.exports = name
  */
 
 var name = 'name'
-var component1 = __webpack__require__(1);
+var component1 = __webpack__require__(3);
 
 module.exports = name
 },function anonymous(module,exports,__webpack__require__

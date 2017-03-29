@@ -51,9 +51,9 @@
 
 	var hello = __webpack_require__(1),
 	    name = __webpack_require__(2)
-
+	var name2 = __webpack_require__(2);
 	console.log(hello)
-	console.log(name)
+	console.log(name,name2)
 
 /***/ },
 /* 1 */

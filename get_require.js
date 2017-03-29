@@ -1,17 +1,18 @@
 /**
  * Created by xiaoxiaosu on 17/3/28.
  */
+
 var fs = require('fs');
 var path = require('path');
 var os = require('os');
 var shell = require('shelljs/global')
 var paths = []
-var moduleId = 1
+var moduleId = 0
+
+
 function get_require(p) {
     var p2 = path.join(process.cwd(),p)
     cd(path.dirname(p2))
-
-
 
     var content = fs.readFileSync(p2,'utf-8')
 
@@ -39,9 +40,9 @@ function get_require(p) {
             // content = content.replace(res[0],'__webpack__require__('+moduleId++ +')')
 
             var rModule = paths.find(function (obj) {
-                return path.join(process.cwd(),r1,obj.path)
+                return path.join(process.cwd(),r1) == obj.path
             })
-            console.log(rModule)
+
 
             content = content.replace(res[0],'__webpack__require__('+rModule.id+')')
             module.content = content
