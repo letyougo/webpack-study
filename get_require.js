@@ -8,6 +8,8 @@ var os = require('os');
 var shell = require('shelljs/global')
 var paths = []
 var moduleId = 0
+var configPath = path.join(__dirname,'webpack.config.js')
+var config = require(configPath)
 
 
 function get_require(p) {
@@ -19,6 +21,7 @@ function get_require(p) {
     var hasModule = paths.find(function (obj) {
         return obj.path == p2
     })
+
     if(!hasModule){
         var module = {
             path:p2,
@@ -50,7 +53,10 @@ function get_require(p) {
     }
 }
 
-get_require('./index.js')
+
+
+console.log(config)
+get_require(config.entry)
 
 var modules = []
 for(var i=0;i<paths.length;i++){
@@ -104,4 +110,4 @@ for(var i=0;i<paths.length;i++){
     /******/ 	return require(0);
     /******/ }
 
-fs.writeFileSync('aaa.js','('+bundlejs.toString()+')(['+modules.toString()+'])')
+fs.writeFileSync(path.join(config.output.path,config.output.filename),'('+bundlejs.toString()+')(['+modules.toString()+'])')
